@@ -1,0 +1,44 @@
+<div class="formWrapper">
+  <form #addUser="ngForm" (ngSubmit)="submit(addUser)">
+    <h1>User Registration</h1>
+    <div>
+      <label for="name">Name</label><br />
+      <input
+        #name="ngModel"
+        required
+        minlength="1"
+        type="text"
+        name="name"
+        ngModel
+      />
+      <span *ngIf="name.touched && name.invalid" class="invalid">Invalid</span>
+    </div>
+    <div>
+      <label for="lastname">Lastname</label><br />
+      <input type="text" name="lastname" ngModel />
+    </div>
+    <div>
+      <label for="privatenumber">Privatenumber</label><br />
+      <input type="number" name="privatenumber" ngModel />
+    </div>
+    <div>
+      <label for="email">Email</label><br />
+      <input type="text" name="email" ngModel />
+    </div>
+    <div>
+      <label for="datetime">Birth Date</label><br />
+      <input type="datetime" name="datetime" ngModel />
+    </div>
+    <div>
+      <select name="category">
+        <option value="category" selected>Category</option>
+      </select>
+    </div>
+    <div>
+      <select>
+        <option value="status" selected>Status</option>
+      </select>
+    </div>
+    <button>Submit</button>
+  </form>
+</div>

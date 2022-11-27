@@ -1,1 +1,17 @@
-<p>navbar works!</p>
+<div class="navBarWrapper">
+  <ul class="listWrapper">
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <a routerLink="/details">Details</a>
+    </li>
+
+    <li routerLinkActive="active">
+      <a routerLink="/category">Category</a>
+    </li>
+    <li routerLinkActive="active">
+      <a routerLink="/userlist"> Userlist</a>
+    </li>
+    <li routerLinkActive="active">
+      <a routerLink="/userstatus">Userstatus</a>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,21 @@
+.formWrapper {
+  padding-top: 48px;
+  display: flex;
+  justify-content: center;
+}
+form > h1 {
+  margin-bottom: 24px;
+}
+div > form > div > input {
+  margin: 4px 0 10px 0;
+}
+div > form > div > select {
+  margin-bottom: 10px;
+  width: 150px;
+}
+div > form > div > select > option {
+  width: 100%;
+}
+.invalid {
+  color: red;
+}

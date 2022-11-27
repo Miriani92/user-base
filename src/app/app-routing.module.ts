@@ -7,11 +7,11 @@ import { UserStatusComponent } from './pages/user-status/user-status.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: 'userstatus', component: UserStatusComponent },
+  { path: 'details', component: DetailsComponent },
   { path: 'userlist', component: UserListComponent },
   { path: 'category', component: CategoryComponent },
-  { path: 'details', component: DetailsComponent },
-  { path: '', redirectTo: '/userstatus', pathMatch: 'full' },
+  { path: 'userstatus', component: UserStatusComponent },
+  //{ path: '', redirectTo: '/userstatus', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];
 

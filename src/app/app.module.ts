@@ -8,6 +8,12 @@ import { UserListComponent } from './pages/user-list/user-list.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { FormsModule } from '@angular/forms';
+import { DetailsFormComponent } from './components/details-form/details-form.component';
+import { FilterComponent } from './components/shared/filter/filter.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogComponent } from './components/shared/dialog/dialog.component';
+import { MaterialModule } from './modules/material/material.module';
 
 @NgModule({
   declarations: [
@@ -18,8 +24,17 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     DetailsComponent,
     NavbarComponent,
     NotFoundComponent,
+    DetailsFormComponent,
+    FilterComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  entryComponents: [DialogComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

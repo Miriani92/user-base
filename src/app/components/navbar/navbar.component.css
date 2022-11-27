@@ -1,0 +1,32 @@
+.navBarWrapper {
+  width: 100%;
+  padding-left: 24px;
+  background-color: rgb(182, 179, 197);
+}
+
+.navBarWrapper > ul > li > a {
+  color: rgb(43, 42, 42);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: large;
+}
+
+.navBarWrapper > ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navBarWrapper > ul > li {
+  line-height: 50px;
+  margin-right: 24px;
+  width: fit-content;
+  padding: 10px;
+  height: 50px;
+}
+
+.navBarWrapper > ul > li.active {
+  color: red;
+  border-bottom: 2px solid red;
+}

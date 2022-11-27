@@ -1,0 +1,27 @@
+page for user status form:
+    - add  new status (popUp)
+    - edit status  (popUp)
+    - filter "true" 
+
+
+page for category:
+    - add new category (popUp)
+    - edit existing category (popUp)
+    - filter "true"  
+
+
+
+page for list of users:
+    - add and edit "false"
+    - filter "true"
+
+
+
+page for details:
+    - add users
+    - edit users
+    - filter "false"
+    
+
+  
+

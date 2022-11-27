@@ -1,0 +1,16 @@
+.filterWrapper {
+  padding-top: 48px;
+  display: flex;
+  justify-content: center;
+}
+.categoryWrapper > div > label {
+  font-size: 24px;
+}
+.categoryWrapper > div > input {
+  margin-top: 10px;
+  width: 200px;
+  height: 24px;
+}
+.categoryWrapper > div > button {
+  margin-left: 10px;
+}
