@@ -22,6 +22,54 @@ page for details:
     - edit users
     - filter "false"
     
+    
+
+
+
+
+
+
+
+
+
+
+API  -------
+
+
+category endpoint:
+    - endpoint "true"
+    - crud "true" 
+    - pagination "true"
+
+userStatus endpoint:
+    - endpoint "true"
+    - crud "true" 
+    - pagination "true"
+
+user endpoint:
+    - endpoint "true"
+    - crud "true" 
+    - pagination "true"
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 
