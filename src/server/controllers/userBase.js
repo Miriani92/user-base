@@ -1,44 +1,147 @@
-const User = require("../models/user");
+const { userModel, statusModel, categorytModel } = require("../models/user");
 
 const getUsersList = async (req, res) => {
-  res.send("all users");
+  try {
+    const usersList = await userModel.find({});
+    res.status(200).json({ usersList });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
+
 const getUser = async (req, res) => {
-  res.send("user");
+  try {
+    const { id: userID } = req.params;
+    const user = await userModel.findOne({ _id: userID });
+    if (!user) {
+      return res.status(404).json({ msg: "no user with this id" });
+    }
+    res.status(200).json({ user });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
+
 const editUser = async (req, res) => {
-  res.send("edit user");
+  try {
+    const { id: userId } = req.params;
+    const user = await userModel.findOneAndUpdate({ _id: userId }, req.body);
+    if (!user) {
+      return res.status(404).json({ msg: "no user with this id" });
+    }
+    res.status(200).json({ user });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
 const deleteUser = async (req, res) => {
-  res.send("delete user");
+  try {
+    const { id: userID } = req.params;
+    const user = await userModel.findOneAndDelete({ _id: userID });
+    if (!user) {
+      return res.status(404).json({ msg: "no user with this id" });
+    }
+
+    res.status(200).json({ user });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
 const addUser = async (req, res) => {
-  const users = await User.create({ name: "miriani" });
-  res.send(users);
+  try {
+    const user = await userModel.create(req.body);
+    res.status(201).json({ user });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
 const getStatusList = async (req, res) => {
-  res.send("all status");
+  try {
+    const statusList = await statusModel.find({});
+    res.status(200).json({ statusList });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
 const addStatus = async (req, res) => {
-  res.send("add status");
+  try {
+    const status = await statusModel.create(req.body);
+    res.status(201).json({ status });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
 const editStatus = async (req, res) => {
-  res.send("edit status");
+  try {
+    const { id: userId } = req.params;
+    const status = await statusModel.findOneAndUpdate(
+      { _id: userId },
+      req.body
+    );
+    if (!status) {
+      return res.status(404).json({ msg: "no user with this id" });
+    }
+    res.status(200).json({ status });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
 const deleteStatus = async (req, res) => {
-  res.send("delete status");
+  try {
+    const { id: userID } = req.params;
+    const status = await statusModel.findOneAndDelete({ _id: userID });
+    if (!status) {
+      return res.status(404).json({ msg: "no user with this id" });
+    }
+
+    res.status(200).json({ status });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
 const getCategoryList = async (req, res) => {
-  res.send("all categoris");
+  try {
+    const categoryList = await categorytModel.find({});
+    res.status(200).json({ categoryList });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
 const addCategory = async (req, res) => {
-  res.send("add category");
+  try {
+    const category = await categorytModel.create(req.body);
+    res.status(201).json({ category });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
+
 const editCategory = async (req, res) => {
-  res.send("edit category");
+  try {
+    const { id: userId } = req.params;
+    const category = await categorytModel.findOneAndUpdate(
+      { _id: userId },
+      req.body
+    );
+    if (!category) {
+      return res.status(404).json({ msg: "no user with this id" });
+    }
+    res.status(200).json({ category });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
 const deleteCategory = async (req, res) => {
-  res.send("delete category");
+  try {
+    const { id: userID } = req.params;
+    const category = await categorytModel.findOneAndDelete({ _id: userID });
+    if (!category) {
+      return res.status(404).json({ msg: "no user with this id" });
+    }
+    res.status(200).json({ category });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
 
 module.exports = {

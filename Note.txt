@@ -53,6 +53,13 @@ user endpoint:
     
 
 
+NOTE: 
+    - category and status should be the part of the user page , we can add category and status that appears in user page 
+    - we must establish realation between this three so that , what ever inputs we would have in status or 
+      categoty it automatically shows up in the user page and we can register usr with the new values 
+      if value is not provided we gave the default value to "NO STATUS"
+      
+    
 
 
 
