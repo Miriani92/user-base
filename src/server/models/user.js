@@ -7,11 +7,11 @@ const UserStatusSchema = new mongoose.Schema({
   name: String,
 });
 const UserSchema = new mongoose.Schema({
-  email: String,
-  privateNumber: Number,
   name: String,
   lastName: String,
-  birthData: Date,
+  email: String,
+  privateNumber: Number,
+  birthDate: Number,
   category: UserCategorySchema,
   status: UserStatusSchema,
 });

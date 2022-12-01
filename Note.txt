@@ -67,7 +67,7 @@ lets do user ditails page logic and markup
 
 Client structure:
     - Make each page as a module, with services pipes directives in it , 
-      moudle is the uppermost wrapper of the each page that incluedes  reusable moudles (pipes , directives,services etc)
+      moudle is the uppermost wrapper of the each page that incluedes  reusable pieces (pipes , directives,services etc)
     - Routes should be defined in the seperate module
     - when we add category or status we need  to use Service with subject to inform details page 
       that when we navigate those status and category data needs to be appear in the 
@@ -80,9 +80,11 @@ Client structure:
 
 
 
-
-
-
-
+User Details page:
+    - Action:
+            - add the new usr to the datbase
+            - Execution:
+                        - collect all data from the forms and disable submit button while first four is not filled 
+                        - when we add the user we need to generate pop up for client to inform
   
 

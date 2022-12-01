@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { UserData } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-details-form',
@@ -6,7 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./details-form.component.css'],
 })
 export class DetailsFormComponent {
-  submit(user: any) {
-    console.log(user);
+  @Output() formSubmitEvent = new EventEmitter();
+  onSubmit(user: UserData): void {
+    this.formSubmitEvent.emit(user);
   }
 }

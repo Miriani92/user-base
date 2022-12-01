@@ -1,5 +1,5 @@
 <div class="formWrapper">
-  <form #addUser="ngForm" (ngSubmit)="submit(addUser)">
+  <form #addUser="ngForm" (ngSubmit)="onSubmit(addUser.value)">
     <h1>User Registration</h1>
     <div>
       <label for="name">Name</label><br />
@@ -15,19 +15,62 @@
     </div>
     <div>
       <label for="lastname">Lastname</label><br />
-      <input type="text" name="lastname" ngModel />
+      <input
+        #lastName="ngModel"
+        required
+        minlength="1"
+        type="text"
+        name="lastName"
+        ngModel
+      />
+      <span *ngIf="lastName.touched && lastName.invalid" class="invalid"
+        >Invalid</span
+      >
     </div>
     <div>
       <label for="privatenumber">Privatenumber</label><br />
-      <input type="number" name="privatenumber" ngModel />
+      <input
+        #privateNumber="ngModel"
+        required
+        minlength="1"
+        type="number"
+        name="privateNumber"
+        ngModel
+      />
+
+      <span
+        *ngIf="privateNumber.touched && privateNumber.invalid"
+        class="invalid"
+        >Invalid</span
+      >
     </div>
     <div>
       <label for="email">Email</label><br />
-      <input type="text" name="email" ngModel />
+      <input
+        #email="ngModel"
+        required
+        minlength="1"
+        type="text"
+        name="email"
+        ngModel
+      />
+      <span *ngIf="email.touched && email.invalid" class="invalid"
+        >Invalid</span
+      >
     </div>
     <div>
-      <label for="datetime">Birth Date</label><br />
-      <input type="datetime" name="datetime" ngModel />
+      <label for="birthDate">Birth Date</label><br />
+      <input
+        #birthDate="ngModel"
+        required
+        minlength="1"
+        type="number"
+        name="birthDate"
+        ngModel
+      />
+      <span *ngIf="birthDate.touched && birthDate.invalid" class="invalid"
+        >Invalid</span
+      >
     </div>
     <div>
       <select name="category">
@@ -39,6 +82,16 @@
         <option value="status" selected>Status</option>
       </select>
     </div>
-    <button>Submit</button>
+    <button
+      [disabled]="
+        name.invalid ||
+        email.invalid ||
+        birthDate.invalid ||
+        privateNumber.invalid
+      "
+      type="submit"
+    >
+      Submit
+    </button>
   </form>
 </div>

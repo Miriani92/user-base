@@ -2,24 +2,20 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserData } from '../models/user.model';
-
-const url = {
-  user: 'http://localhost:5000/api/v1/users',
-  category: 'http://localhost:5000/api/v1/users/category',
-  status: 'http://localhost:5000/api/v1/users/status',
-};
+import { URL } from '../constants/constants';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserBaseService {
   constructor(private http: HttpClient) {}
-  /*  addUser():Observable<UserData>{
-
+  addUser(user: UserData) {
+    return this.http
+      .post<UserData>(URL.base, user)
+      .subscribe((res) => console.log('data has been send'));
   }
-*/
 
   getUserList(): Observable<UserData> {
-    return this.http.get<UserData>(url.user);
+    return this.http.get<UserData>(URL.base);
   }
 }

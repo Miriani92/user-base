@@ -1,11 +1,11 @@
 export interface UserData {
-  email: String;
-  privateNumber: Number;
   name: String;
   lastName: String;
-  birthData: Date;
-  category: Category;
-  status: Status;
+  email: String;
+  privateNumber: Number;
+  birthDate: Number;
+  category?: Category;
+  status?: Status;
 }
 
 export interface Category {
