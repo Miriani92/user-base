@@ -9,6 +9,7 @@ import { URL } from '../constants/constants';
 })
 export class UserBaseService {
   constructor(private http: HttpClient) {}
+
   addUser(user: UserData) {
     return this.http
       .post<UserData>(URL.base, user)
@@ -17,5 +18,10 @@ export class UserBaseService {
 
   getUserList(): Observable<UserData> {
     return this.http.get<UserData>(URL.base);
+  }
+
+  filterUserList(filterBy: string): Observable<UserData> {
+    console.log('FilteredData');
+    return this.http.get<UserData>(URL.base, {});
   }
 }

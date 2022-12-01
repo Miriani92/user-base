@@ -80,11 +80,11 @@ Client structure:
 
 
 
-User Details page:
-    - Action:
-            - add the new usr to the datbase
-            - Execution:
-                        - collect all data from the forms and disable submit button while first four is not filled 
-                        - when we add the user we need to generate pop up for client to inform
-  
+ we need to filter the user list 
+ for that we need to pass the data 
+ functionality should be like this 
+ when we navigate to the list screen data needs to be fetched automatically 
+ we do this in ng on init 
+ but also we need to filter the data this would be 
+ we create ins service filter userlist and we avoke this service in the  
 

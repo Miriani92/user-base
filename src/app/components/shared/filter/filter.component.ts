@@ -10,6 +10,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 export class FilterComponent {
   @Input() buttonTitle: string = '';
   @Input() filterTitle: string = '';
+  @Input() isDialog: boolean = false;
   constructor(public dialog: MatDialog) {}
   openDialog() {
     this.dialog.open(DialogComponent);
