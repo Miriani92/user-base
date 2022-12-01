@@ -25,7 +25,7 @@ page for details:
     
 
 
-
+====================================================================
 
 
 
@@ -52,13 +52,9 @@ user endpoint:
     - pagination "true"
     
 
-
-NOTE: 
-    - category and status should be the part of the user page , we can add category and status that appears in user page 
-    - we must establish realation between this three so that , what ever inputs we would have in status or 
-      categoty it automatically shows up in the user page and we can register usr with the new values 
-      if value is not provided we gave the default value to "NO STATUS"
-      
+lets do user ditails page logic and markup
+    - do the all api calls 
+    - and then we do the category page thin
     
 
 
@@ -67,7 +63,17 @@ NOTE:
 
 
 
+===================================================
 
+Client structure:
+    - Make each page as a module, with services pipes directives in it , 
+      moudle is the uppermost wrapper of the each page that incluedes  reusable moudles (pipes , directives,services etc)
+    - Routes should be defined in the seperate module
+    - when we add category or status we need  to use Service with subject to inform details page 
+      that when we navigate those status and category data needs to be appear in the 
+      details page
+    - We can create the pipes folder and do the costom pipes
+    
 
 
 
