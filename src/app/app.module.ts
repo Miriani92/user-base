@@ -8,13 +8,12 @@ import { UserListComponent } from './pages/user-list/user-list.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { FormsModule } from '@angular/forms';
-import { DetailsFormComponent } from './components/details-form/details-form.component';
 import { FilterComponent } from './components/shared/filter/filter.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogComponent } from './components/shared/dialog/dialog.component';
 import { MaterialModule } from './modules/material/material.module';
 import { HttpClientModule } from '@angular/common/http';
+import { UserDetailsModule } from './modules/pages/user-details.module';
 
 @NgModule({
   declarations: [
@@ -22,20 +21,18 @@ import { HttpClientModule } from '@angular/common/http';
     CategoryComponent,
     UserStatusComponent,
     UserListComponent,
-    DetailsComponent,
     NavbarComponent,
     NotFoundComponent,
-    DetailsFormComponent,
     FilterComponent,
   ],
   entryComponents: [DialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    UserDetailsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
