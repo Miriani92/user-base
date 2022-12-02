@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const {
   getUsersList,
+  filterUsers,
   getUser,
   editUser,
   deleteUser,
@@ -19,6 +20,7 @@ const {
 router.route("/").get(getUsersList).post(addUser);
 router.route("/category").get(getCategoryList).post(addCategory);
 router.route("/status").get(getStatusList).post(addStatus);
+router.route("/userlist").post(filterUsers);
 
 router.route("/category/:id").patch(editCategory).delete(deleteCategory);
 router.route("/status/:id").patch(editStatus).delete(deleteStatus);

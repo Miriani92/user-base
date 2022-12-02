@@ -9,17 +9,23 @@ import { UserBaseService } from 'src/app/services/user-base.service';
 })
 export class UserListComponent implements OnInit {
   constructor(private userService: UserBaseService) {}
+  public users = {};
   ngOnInit(): void {
     this.userService.getUserList().subscribe({
       next: (response) => {
-        console.log(response);
+        this.users = response;
+        console.log(this.users);
       },
     });
   }
 
   onFilterUserList(filterForm: NgForm): any {
     const filterString = filterForm.value;
-    this.userService.filterUserList(filterString);
+    this.userService.filterUserList(filterString).subscribe({
+      next: (response) => {
+        this.users = response;
+      },
+    });
     filterForm.reset();
   }
 }

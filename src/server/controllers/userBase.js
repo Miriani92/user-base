@@ -1,9 +1,19 @@
 const { userModel, statusModel, categorytModel } = require("../models/user");
-
+const queryList = require("../utils/queryList");
 const getUsersList = async (req, res) => {
   try {
     const usersList = await userModel.find({});
     res.status(200).json({ usersList });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
+};
+const filterUsers = async (req, res) => {
+  const query = queryList(req.body);
+  try {
+    const filterdUsersList = await userModel.find(query);
+
+    res.status(200).json({ filterdUsersList });
   } catch (error) {
     res.status(500).json({ msg: error });
   }
@@ -158,4 +168,5 @@ module.exports = {
   addCategory,
   editCategory,
   deleteCategory,
+  filterUsers,
 };

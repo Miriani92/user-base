@@ -1,11 +1,91 @@
-<div class="listWrapper">
+<h1 class="header">Filter Users</h1>
+<div class="formWrapper">
   <form
     #filterForm="ngForm"
     class="filter"
     (submit)="onFilterUserList(filterForm)"
   >
-    <label for="category">Filter User List</label><br />
-    <input type="text" name="filterBy" ngModel />
-    <button type="submit">Filter</button>
+    <div>
+      <label for="name">Name</label><br />
+      <input
+        #name="ngModel"
+        required
+        minlength="1"
+        type="text"
+        name="name"
+        ngModel
+      />
+      <span *ngIf="name.touched && name.invalid" class="invalid">Invalid</span>
+    </div>
+    <div>
+      <label for="lastname">Lastname</label><br />
+      <input
+        #lastName="ngModel"
+        required
+        minlength="1"
+        type="text"
+        name="lastName"
+        ngModel
+      />
+      <span *ngIf="lastName.touched && lastName.invalid" class="invalid"
+        >Invalid</span
+      >
+    </div>
+    <div>
+      <label for="privatenumber">Privatenumber</label><br />
+      <input
+        #privateNumber="ngModel"
+        required
+        minlength="1"
+        type="number"
+        name="privateNumber"
+        ngModel
+      />
+
+      <span
+        *ngIf="privateNumber.touched && privateNumber.invalid"
+        class="invalid"
+        >Invalid</span
+      >
+    </div>
+    <div>
+      <label for="email">Email</label><br />
+      <input
+        #email="ngModel"
+        required
+        minlength="1"
+        type="text"
+        name="email"
+        ngModel
+      />
+      <span *ngIf="email.touched && email.invalid" class="invalid"
+        >Invalid</span
+      >
+    </div>
+    <div>
+      <label for="birthDate">Birth Date</label><br />
+      <input
+        #birthDate="ngModel"
+        required
+        minlength="1"
+        type="number"
+        name="birthDate"
+        ngModel
+      />
+      <span *ngIf="birthDate.touched && birthDate.invalid" class="invalid"
+        >Invalid</span
+      >
+    </div>
+    <div>
+      <select name="category">
+        <option value="category" selected>Category</option>
+      </select>
+    </div>
+    <div>
+      <select>
+        <option value="status" selected>Status</option>
+      </select>
+    </div>
+    <button type="submit">Submit</button>
   </form>
 </div>
