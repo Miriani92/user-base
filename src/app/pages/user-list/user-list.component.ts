@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { UserBaseService } from 'src/app/services/user-base.service';
 
 @Component({
@@ -14,5 +15,11 @@ export class UserListComponent implements OnInit {
         console.log(response);
       },
     });
+  }
+
+  onFilterUserList(filterForm: NgForm): any {
+    const filterString = filterForm.value;
+    this.userService.filterUserList(filterString);
+    filterForm.reset();
   }
 }

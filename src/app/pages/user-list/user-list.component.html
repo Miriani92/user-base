@@ -1,1 +1,11 @@
-<app-filter buttonTitle="Filter Users" filterTitle="UserList"></app-filter>
+<div class="listWrapper">
+  <form
+    #filterForm="ngForm"
+    class="filter"
+    (submit)="onFilterUserList(filterForm)"
+  >
+    <label for="category">Filter User List</label><br />
+    <input type="text" name="filterBy" ngModel />
+    <button type="submit">Filter</button>
+  </form>
+</div>

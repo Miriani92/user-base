@@ -21,7 +21,7 @@ export class UserBaseService {
   }
 
   filterUserList(filterBy: string): Observable<UserData> {
-    console.log('FilteredData');
+    console.log(filterBy);
     return this.http.get<UserData>(URL.base, {});
   }
 }

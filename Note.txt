@@ -79,12 +79,3 @@ Client structure:
 
 
 
-
- we need to filter the user list 
- for that we need to pass the data 
- functionality should be like this 
- when we navigate to the list screen data needs to be fetched automatically 
- we do this in ng on init 
- but also we need to filter the data this would be 
- we create ins service filter userlist and we avoke this service in the  
-
