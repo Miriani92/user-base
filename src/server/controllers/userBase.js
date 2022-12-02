@@ -120,8 +120,9 @@ const getCategoryList = async (req, res) => {
 };
 const addCategory = async (req, res) => {
   try {
-    const category = await categorytModel.create(req.body);
-    res.status(201).json({ category });
+    await categorytModel.create(req.body);
+    const updatedCategory = await userModel.find();
+    res.status(201).json({ updatedCategory });
   } catch (error) {
     res.status(500).json({ msg: error });
   }

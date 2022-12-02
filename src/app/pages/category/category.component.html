@@ -1,5 +1,12 @@
-<app-filter
-  buttonTitle="Add Category"
-  filterTitle="Filter Categories"
-  [isDialog]="true"
-></app-filter>
+<div>
+  <app-filter
+    buttonTitle="Search Category"
+    filterTitle="Categories"
+    [isDialog]="false"
+  ></app-filter>
+  <br />
+  <div class="categoryList" *ngFor="let category of categories">
+    <p>{{ category.name }}</p>
+    <button (click)="openDialog(category.name)">Edit</button>
+  </div>
+</div>

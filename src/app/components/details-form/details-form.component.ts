@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { UserData } from 'src/app/models/user.model';
+//import { UserData } from 'src/app/models/user.model';
 import { NgForm } from '@angular/forms';
 
 @Component({
