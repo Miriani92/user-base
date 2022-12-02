@@ -25,4 +25,7 @@ export class UserBaseService {
   filterUserList(filterBy: object) {
     return this.http.post(URL.userList, filterBy);
   }
+  deleteUser(id: string) {
+    return this.http.delete(URL.base + `/${id}`);
+  }
 }

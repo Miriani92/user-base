@@ -9,12 +9,12 @@ import { UserBaseService } from 'src/app/services/user-base.service';
 })
 export class UserListComponent implements OnInit {
   constructor(private userService: UserBaseService) {}
-  public users = {};
+  public users: any[] = [];
   ngOnInit(): void {
     this.userService.getUserList().subscribe({
-      next: (response) => {
-        this.users = response;
-        console.log(this.users);
+      next: (res) => {
+        const { usersList }: any = res;
+        this.users = usersList;
       },
     });
   }
@@ -22,10 +22,20 @@ export class UserListComponent implements OnInit {
   onFilterUserList(filterForm: NgForm): any {
     const filterString = filterForm.value;
     this.userService.filterUserList(filterString).subscribe({
-      next: (response) => {
-        this.users = response;
+      next: (res) => {
+        const { filterdUsersList }: any = res;
+        this.users = filterdUsersList;
       },
     });
     filterForm.reset();
+  }
+
+  onDeleteUser(id: string): any {
+    this.userService.deleteUser(id).subscribe({
+      next: (res) => {
+        const { updatedUsers }: any = res;
+        this.users = updatedUsers;
+      },
+    });
   }
 }

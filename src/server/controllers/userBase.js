@@ -52,7 +52,8 @@ const deleteUser = async (req, res) => {
       return res.status(404).json({ msg: "no user with this id" });
     }
 
-    res.status(200).json({ user });
+    const updatedUsers = await userModel.find();
+    res.status(200).json({ updatedUsers });
   } catch (error) {
     res.status(500).json({ msg: error });
   }

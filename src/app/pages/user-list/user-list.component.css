@@ -11,3 +11,11 @@ form {
   align-items: center;
   justify-content: center;
 }
+.user {
+  display: flex;
+}
+.userWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

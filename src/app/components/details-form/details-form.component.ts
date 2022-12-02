@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { UserData } from 'src/app/models/user.model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-details-form',
@@ -8,7 +9,9 @@ import { UserData } from 'src/app/models/user.model';
 })
 export class DetailsFormComponent {
   @Output() formSubmitEvent = new EventEmitter();
-  onSubmit(user: UserData): void {
+  onSubmit(userForm: NgForm): void {
+    const user = userForm.value;
     this.formSubmitEvent.emit(user);
+    userForm.reset();
   }
 }
