@@ -40,4 +40,7 @@ export class UserBaseService {
   editCategory(edited: any) {
     return this.http.patch(URL.category, edited);
   }
+  deleteCategory(id: string) {
+    return this.http.delete(URL.category + `/${id}`);
+  }
 }

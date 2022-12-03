@@ -5,8 +5,10 @@
     [isDialog]="false"
   ></app-filter>
   <br />
+  <button (click)="openDialog()">Add Category</button>
   <div class="categoryList" *ngFor="let category of categories">
     <p>{{ category.name }}</p>
     <button (click)="openDialog(category)">Edit</button>
+    <button (click)="onDeleteCategory(category._id)">Delete</button>
   </div>
 </div>

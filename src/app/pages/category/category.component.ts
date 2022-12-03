@@ -3,7 +3,7 @@ import { UserBaseService } from 'src/app/services/user-base.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/components/shared/dialog/dialog.component';
 import { Category } from 'src/app/models/user.model';
-import { OnChanges } from '@angular/core';
+
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
@@ -21,19 +21,47 @@ export class CategoryComponent implements OnInit {
       },
     });
   }
-  openDialog(category: object) {
+  openDialog(category?: object) {
+    let edit;
+    let buttonText;
+    if (category) {
+      buttonText = 'Save Edit';
+      edit = this.onEditCategory;
+    } else {
+      buttonText = 'Add';
+      edit = this.onAddCategory;
+    }
+
     this.dialog.open(DialogComponent, {
       data: {
         ...category,
         category: category,
-        buttonTitle: 'Save',
+        buttonTitle: buttonText,
         input: true,
-        edit: this.onEditCategory,
+        edit,
       },
     });
   }
   onEditCategory(editedCategory: Category) {
     this.userService.editCategory(editedCategory).subscribe({
+      next: (res) => {
+        const { updatedCategories }: any = res;
+        this.categories = updatedCategories;
+        location.reload();
+      },
+    });
+  }
+  onDeleteCategory(id: string) {
+    this.userService.deleteCategory(id).subscribe({
+      next: (res) => {
+        location.reload();
+      },
+    });
+  }
+
+  onAddCategory(category: any) {
+    console.log(category);
+    this.userService.addCategory(category).subscribe({
       next: (res) => {
         const { updatedCategories }: any = res;
         this.categories = updatedCategories;

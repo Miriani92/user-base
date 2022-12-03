@@ -119,8 +119,10 @@ const getCategoryList = async (req, res) => {
   }
 };
 const addCategory = async (req, res) => {
+  const addedCategory = req.body.name;
+
   try {
-    await categorytModel.create(req.body);
+    await categorytModel.create(addedCategory);
     const updatedCategory = await userModel.find();
     res.status(201).json({ updatedCategory });
   } catch (error) {
@@ -153,7 +155,8 @@ const deleteCategory = async (req, res) => {
     if (!category) {
       return res.status(404).json({ msg: "no user with this id" });
     }
-    res.status(200).json({ category });
+    const updatedCategroy = await categorytModel.find();
+    res.status(200).json({ updatedCategroy });
   } catch (error) {
     res.status(500).json({ msg: error });
   }

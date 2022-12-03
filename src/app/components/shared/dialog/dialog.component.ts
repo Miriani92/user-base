@@ -27,10 +27,17 @@ export class DialogComponent implements OnInit {
     this.edit = this.data.edit;
   }
   onEdit(inputForm: NgForm) {
-    const editedCategory = {
-      _id: this.id,
-      name: inputForm.value,
-    };
+    let editedCategory;
+    if (this.id) {
+      editedCategory = {
+        _id: this.id,
+        name: inputForm.value,
+      };
+    } else {
+      editedCategory = {
+        name: inputForm.value,
+      };
+    }
     this.edit(editedCategory);
     inputForm.reset();
   }
