@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserData } from '../models/user.model';
-import { HttpParams } from '@angular/common/http';
 import { URL } from '../constants/constants';
 
 @Injectable({
@@ -10,7 +9,6 @@ import { URL } from '../constants/constants';
 })
 export class UserBaseService {
   public userList = {};
-  public updatedCategories: any;
 
   constructor(private http: HttpClient) {}
 
@@ -36,13 +34,10 @@ export class UserBaseService {
   getCategories(): any {
     return this.http.get(URL.category);
   }
+
   // here we subscribe in the services and making the updated users global
 
   editCategory(edited: any) {
-    return this.http.patch(URL.category, edited).subscribe({
-      next: (res) => {
-        this.updatedCategories = res;
-      },
-    });
+    return this.http.patch(URL.category, edited);
   }
 }

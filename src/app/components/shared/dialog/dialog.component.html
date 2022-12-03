@@ -1,5 +1,5 @@
-<form #dialogForm="ngForm" class="dialogWrapper" (submit)="onEdit(dialogForm)">
+<form #dialogForm="ngForm" class="dialogWrapper">
   <h1>Hello</h1>
   <input *ngIf="input" #dialogInput="ngModel" name="name" [(ngModel)]="title" />
-  <button>{{ buttonTitle }}</button>
+  <button (click)="onEdit(dialogForm)">{{ buttonTitle }}</button>
 </form>

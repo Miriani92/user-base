@@ -14,6 +14,7 @@ export class DialogComponent implements OnInit {
   @Input() input: boolean = false;
   @Input() title: string = '';
   @Input() id: string = '';
+  @Input() edit: any;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private userService: UserBaseService
@@ -23,13 +24,14 @@ export class DialogComponent implements OnInit {
     this.input = this.data.input;
     this.title = this.data.name;
     this.id = this.data._id;
+    this.edit = this.data.edit;
   }
   onEdit(inputForm: NgForm) {
     const editedCategory = {
       _id: this.id,
       name: inputForm.value,
     };
-    this.userService.editCategory(editedCategory);
+    this.edit(editedCategory);
     inputForm.reset();
   }
 }
