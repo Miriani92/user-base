@@ -1,4 +1,4 @@
-const queryList = ({ name, lastName, email, privateNumber, birthDate }) => {
+const queryUserList = ({ name, lastName, email, privateNumber, birthDate }) => {
   const query = {
     name: { $regex: name },
     lastName: { $regex: lastName },
@@ -6,13 +6,20 @@ const queryList = ({ name, lastName, email, privateNumber, birthDate }) => {
     privateNumber: { $eq: privateNumber },
     birthDate: { $eq: birthDate },
   };
-  const obj = {};
+  const queryData = {};
   for (let key in query) {
     if (query[key].$regex || query[key].$eq) {
-      obj[key] = query[key];
+      queryData[key] = query[key];
     }
   }
-  return obj;
+  return queryData;
 };
 
-module.exports = queryList;
+const queryList = ({ name }) => {
+  const queryData = {
+    name: { $regex: name },
+  };
+  return queryData;
+};
+
+module.exports = { queryUserList, queryList };

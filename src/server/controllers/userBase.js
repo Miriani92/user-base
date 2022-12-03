@@ -1,5 +1,6 @@
 const { userModel, statusModel, categorytModel } = require("../models/user");
-const queryList = require("../utils/queryList");
+const { queryUserList, queryList } = require("../utils/queryList");
+
 const getUsersList = async (req, res) => {
   try {
     const usersList = await userModel.find({});
@@ -9,7 +10,7 @@ const getUsersList = async (req, res) => {
   }
 };
 const filterUsers = async (req, res) => {
-  const query = queryList(req.body);
+  const query = queryUserList(req.body);
   try {
     const filterdUsersList = await userModel.find(query);
 
@@ -67,8 +68,15 @@ const addUser = async (req, res) => {
   }
 };
 const getStatusList = async (req, res) => {
+  let query;
+  if (req.body.name) {
+    query = queryList(req.body);
+  } else {
+    query = {};
+  }
+  console.log(query);
   try {
-    const statusList = await statusModel.find({});
+    const statusList = await statusModel.find(query);
     res.status(200).json({ statusList });
   } catch (error) {
     res.status(500).json({ msg: error });
@@ -117,8 +125,15 @@ const deleteStatus = async (req, res) => {
   }
 };
 const getCategoryList = async (req, res) => {
+  let query;
+  if (req.body.name) {
+    query = queryList(req.body);
+  } else {
+    query = {};
+  }
+
   try {
-    const categoryList = await categorytModel.find({});
+    const categoryList = await categorytModel.find(query);
     res.status(200).json({ categoryList });
   } catch (error) {
     res.status(500).json({ msg: error });
