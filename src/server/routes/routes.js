@@ -23,11 +23,11 @@ router
   .get(getCategoryList)
   .post(addCategory)
   .patch(editCategory);
-router.route("/status").get(getStatusList).post(addStatus);
+router.route("/status").get(getStatusList).post(addStatus).patch(editStatus);
 router.route("/userlist").post(filterUsers);
 
 router.route("/category/:id").delete(deleteCategory);
-router.route("/status/:id").patch(editStatus).delete(deleteStatus);
+router.route("/status/:id").delete(deleteStatus);
 router.route("/:id").get(getUser).patch(editUser).delete(deleteUser);
 
 module.exports = router;

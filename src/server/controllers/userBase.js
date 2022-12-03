@@ -75,24 +75,30 @@ const getStatusList = async (req, res) => {
   }
 };
 const addStatus = async (req, res) => {
+  const addedStatus = req.body.name;
+
   try {
-    const status = await statusModel.create(req.body);
-    res.status(201).json({ status });
+    await statusModel.create(addedStatus);
+    const updatedStatus = await statusModel.find();
+    res.status(201).json({ updatedStatus });
   } catch (error) {
     res.status(500).json({ msg: error });
   }
 };
 const editStatus = async (req, res) => {
+  const { _id: categoryID } = req.body;
+  const updatedStatus = req.body.name;
   try {
-    const { id: userId } = req.params;
     const status = await statusModel.findOneAndUpdate(
-      { _id: userId },
-      req.body
+      { _id: categoryID },
+      updatedStatus
     );
     if (!status) {
       return res.status(404).json({ msg: "no user with this id" });
     }
-    res.status(200).json({ status });
+    const updatedStatuses = await statusModel.find();
+
+    res.status(200).json({ updatedStatuses });
   } catch (error) {
     res.status(500).json({ msg: error });
   }

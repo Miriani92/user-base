@@ -43,4 +43,18 @@ export class UserBaseService {
   deleteCategory(id: string) {
     return this.http.delete(URL.category + `/${id}`);
   }
+  // User-status
+  addStatus(status: object) {
+    return this.http.post(URL.status, status);
+  }
+  getStatuses(): any {
+    return this.http.get(URL.status);
+  }
+
+  editStatus(edited: any) {
+    return this.http.patch(URL.status, edited);
+  }
+  deleteStatus(id: string) {
+    return this.http.delete(URL.status + `/${id}`);
+  }
 }
