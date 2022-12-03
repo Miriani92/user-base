@@ -129,16 +129,19 @@ const addCategory = async (req, res) => {
 };
 
 const editCategory = async (req, res) => {
+  const { _id: categoryID } = req.body;
+  const updatedCategory = req.body.name;
   try {
-    const { id: userId } = req.params;
     const category = await categorytModel.findOneAndUpdate(
-      { _id: userId },
-      req.body
+      { _id: categoryID },
+      updatedCategory
     );
     if (!category) {
       return res.status(404).json({ msg: "no user with this id" });
     }
-    res.status(200).json({ category });
+    const updatedCategories = await categorytModel.find();
+
+    res.status(200).json({ updatedCategories });
   } catch (error) {
     res.status(500).json({ msg: error });
   }

@@ -10,6 +10,8 @@ import { URL } from '../constants/constants';
 })
 export class UserBaseService {
   public userList = {};
+  public updatedCategories: any;
+
   constructor(private http: HttpClient) {}
 
   addUser(user: UserData) {
@@ -34,5 +36,13 @@ export class UserBaseService {
   getCategories(): any {
     return this.http.get(URL.category);
   }
-  editCategory(id: string) {}
+  // here we subscribe in the services and making the updated users global
+
+  editCategory(edited: any) {
+    return this.http.patch(URL.category, edited).subscribe({
+      next: (res) => {
+        this.updatedCategories = res;
+      },
+    });
+  }
 }

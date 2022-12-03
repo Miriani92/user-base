@@ -12,7 +12,8 @@ import { NgForm } from '@angular/forms';
 export class DialogComponent implements OnInit {
   @Input() buttonTitle: string = '';
   @Input() input: boolean = false;
-  @Input() categoryTitle: string = '';
+  @Input() title: string = '';
+  @Input() id: string = '';
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private userService: UserBaseService
@@ -20,7 +21,15 @@ export class DialogComponent implements OnInit {
   ngOnInit(): void {
     this.buttonTitle = this.data.buttonTitle;
     this.input = this.data.input;
-    this.categoryTitle = this.data.categoryTitle;
+    this.title = this.data.name;
+    this.id = this.data._id;
   }
-  onEdit(inputForm: NgForm) {}
+  onEdit(inputForm: NgForm) {
+    const editedCategory = {
+      _id: this.id,
+      name: inputForm.value,
+    };
+    this.userService.editCategory(editedCategory);
+    inputForm.reset();
+  }
 }

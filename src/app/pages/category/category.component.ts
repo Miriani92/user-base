@@ -20,10 +20,11 @@ export class CategoryComponent implements OnInit {
       },
     });
   }
-  openDialog(category: string) {
+  openDialog(category: object) {
     this.dialog.open(DialogComponent, {
       data: {
-        categoryTitle: category,
+        ...category,
+        category: category,
         buttonTitle: 'Save',
         input: true,
       },
