@@ -68,15 +68,8 @@ const addUser = async (req, res) => {
   }
 };
 const getStatusList = async (req, res) => {
-  let query;
-  if (req.body.name) {
-    query = queryList(req.body);
-  } else {
-    query = {};
-  }
-  console.log(query);
   try {
-    const statusList = await statusModel.find(query);
+    const statusList = await statusModel.find();
     res.status(200).json({ statusList });
   } catch (error) {
     res.status(500).json({ msg: error });
@@ -182,6 +175,36 @@ const deleteCategory = async (req, res) => {
     res.status(500).json({ msg: error });
   }
 };
+const filterStatuses = async (req, res) => {
+  let query;
+  if (req.body.name) {
+    query = queryList(req.body);
+  } else {
+    query = {};
+  }
+
+  try {
+    const filterdStatusList = await statusModel.find(query);
+    res.status(200).json({ filterdStatusList });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
+};
+const filterCategories = async () => {
+  let query;
+  if (req.body.name) {
+    query = queryList(req.body);
+  } else {
+    query = {};
+  }
+
+  try {
+    const filterdStatusList = await categorytModel.find(query);
+    res.status(200).json({ filterdStatusList });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
+};
 
 module.exports = {
   getUsersList,
@@ -198,4 +221,6 @@ module.exports = {
   editCategory,
   deleteCategory,
   filterUsers,
+  filterStatuses,
+  filterCategories,
 };

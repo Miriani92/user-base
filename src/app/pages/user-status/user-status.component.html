@@ -1,9 +1,15 @@
 <div>
-  <app-filter
-    buttonTitle="Search Status"
-    filterTitle="Status"
-    [isDialog]="false"
-  ></app-filter>
+  <div class="filterWrapper">
+    <form
+      #statusForm="ngForm"
+      class="filter"
+      (submit)="filterStatuses(statusForm)"
+    >
+      <label for="status">Statuses</label><br />
+      <input type="text" name="name" ngModel />
+      <button type="submit">Filter Statuses</button>
+    </form>
+  </div>
   <br />
   <button (click)="openDialog()">Add Status</button>
   <div class="statusList" *ngFor="let status of statuses">

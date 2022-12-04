@@ -47,7 +47,7 @@ export class UserBaseService {
   addStatus(status: object) {
     return this.http.post(URL.status, status);
   }
-  getStatuses(): any {
+  getStatuses() {
     return this.http.get(URL.status);
   }
 
@@ -56,5 +56,9 @@ export class UserBaseService {
   }
   deleteStatus(id: string) {
     return this.http.delete(URL.status + `/${id}`);
+  }
+
+  filterStatuses(filterBy: any) {
+    return this.http.post(URL.statusList, filterBy);
   }
 }

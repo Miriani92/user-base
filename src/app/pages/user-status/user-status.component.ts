@@ -3,6 +3,7 @@ import { UserBaseService } from 'src/app/services/user-base.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/components/shared/dialog/dialog.component';
 import { Status } from 'src/app/models/user.model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-user-status',
@@ -66,6 +67,15 @@ export class UserStatusComponent implements OnInit {
         const { updatedStatuses }: any = res;
         this.statuses = updatedStatuses;
         location.reload();
+      },
+    });
+  }
+  filterStatuses(statusForm: NgForm) {
+    this.userService.filterStatuses(statusForm.value).subscribe({
+      next: (res: any) => {
+        const { filterdStatusList }: any = res;
+        this.statuses = filterdStatusList;
+        statusForm.reset();
       },
     });
   }
