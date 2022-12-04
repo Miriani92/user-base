@@ -190,17 +190,16 @@ const filterStatuses = async (req, res) => {
     res.status(500).json({ msg: error });
   }
 };
-const filterCategories = async () => {
+const filterCategories = async (req, res) => {
   let query;
   if (req.body.name) {
     query = queryList(req.body);
   } else {
     query = {};
   }
-
   try {
-    const filterdStatusList = await categorytModel.find(query);
-    res.status(200).json({ filterdStatusList });
+    const filterdCategoryList = await categorytModel.find(query);
+    res.status(200).json({ filterdCategoryList });
   } catch (error) {
     res.status(500).json({ msg: error });
   }

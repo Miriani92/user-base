@@ -61,4 +61,8 @@ export class UserBaseService {
   filterStatuses(filterBy: any) {
     return this.http.post(URL.statusList, filterBy);
   }
+  fitlerCategories(filterBy: any) {
+    console.log('in services', filterBy);
+    return this.http.post(URL.categoryLsit, filterBy);
+  }
 }

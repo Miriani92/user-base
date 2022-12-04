@@ -3,6 +3,7 @@ import { UserBaseService } from 'src/app/services/user-base.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/components/shared/dialog/dialog.component';
 import { Category } from 'src/app/models/user.model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-category',
@@ -11,6 +12,7 @@ import { Category } from 'src/app/models/user.model';
 })
 export class CategoryComponent implements OnInit {
   constructor(private userService: UserBaseService, public dialog: MatDialog) {}
+
   public categories: any = [];
 
   ngOnInit(): void {
@@ -66,6 +68,16 @@ export class CategoryComponent implements OnInit {
         const { updatedCategories }: any = res;
         this.categories = updatedCategories;
         location.reload();
+      },
+    });
+  }
+
+  filterCategories(categoryForm: NgForm) {
+    this.userService.fitlerCategories(categoryForm.value).subscribe({
+      next: (res: any) => {
+        const { filterdCategoryList }: any = res;
+        this.categories = filterdCategoryList;
+        categoryForm.reset();
       },
     });
   }

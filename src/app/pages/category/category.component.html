@@ -1,9 +1,15 @@
 <div>
-  <app-filter
-    buttonTitle="Search Category"
-    filterTitle="Categories"
-    [isDialog]="false"
-  ></app-filter>
+  <div class="filterWrapper">
+    <form
+      #categoryFrom="ngForm"
+      class="filter"
+      (submit)="filterCategories(categoryFrom)"
+    >
+      <label for="category">Statuses</label><br />
+      <input type="text" name="name" ngModel />
+      <button type="submit">Filter Categories</button>
+    </form>
+  </div>
   <br />
   <button (click)="openDialog()">Add Category</button>
   <div class="categoryList" *ngFor="let category of categories">
