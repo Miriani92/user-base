@@ -1,3 +1,6 @@
 <div class="wrapper">
-  <app-details-form (formSubmitEvent)="onAddUser($event)"></app-details-form>
+  <app-details-form
+    (formSubmitEvent)="onAddUser($event)"
+    [user]="currentUser"
+  ></app-details-form>
 </div>

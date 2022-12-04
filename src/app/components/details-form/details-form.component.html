@@ -9,7 +9,7 @@
         minlength="1"
         type="text"
         name="name"
-        ngModel
+        [ngModel]="user?.name"
       />
       <span *ngIf="name.touched && name.invalid" class="invalid">Invalid</span>
     </div>
@@ -21,7 +21,7 @@
         minlength="1"
         type="text"
         name="lastName"
-        ngModel
+        [ngModel]="user?.lastName"
       />
       <span *ngIf="lastName.touched && lastName.invalid" class="invalid"
         >Invalid</span
@@ -35,7 +35,7 @@
         minlength="1"
         type="number"
         name="privateNumber"
-        ngModel
+        [ngModel]="user?.privateNumber"
       />
 
       <span
@@ -52,7 +52,7 @@
         minlength="1"
         type="text"
         name="email"
-        ngModel
+        [ngModel]="user?.email"
       />
       <span *ngIf="email.touched && email.invalid" class="invalid"
         >Invalid</span
@@ -66,6 +66,7 @@
         minlength="1"
         type="number"
         name="birthDate"
+        [ngModel]="user?.birthDate"
         ngModel
       />
       <span *ngIf="birthDate.touched && birthDate.invalid" class="invalid"

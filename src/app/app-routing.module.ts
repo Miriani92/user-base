@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'userlist', component: UserListComponent },
   { path: 'category', component: CategoryComponent },
   { path: 'userstatus', component: UserStatusComponent },
+  { path: 'details/:id', component: DetailsComponent },
   { path: '', redirectTo: '/details', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];

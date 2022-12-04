@@ -99,5 +99,6 @@
       <p>{{ user.email }}</p>
     </div>
     <button (click)="onDeleteUser(user._id)">Delete</button>
+    <button routerLink="/details/{{ user._id }}">Edit</button>
   </div>
 </div>

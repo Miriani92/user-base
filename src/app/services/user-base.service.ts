@@ -65,4 +65,7 @@ export class UserBaseService {
     console.log('in services', filterBy);
     return this.http.post(URL.categoryLsit, filterBy);
   }
+  getUser(id: any) {
+    return this.http.get(URL.base + `/${id}`);
+  }
 }

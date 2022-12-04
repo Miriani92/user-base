@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-//import { UserData } from 'src/app/models/user.model';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -9,6 +8,7 @@ import { NgForm } from '@angular/forms';
 })
 export class DetailsFormComponent {
   @Output() formSubmitEvent = new EventEmitter();
+  @Input() public user: any;
   onSubmit(userForm: NgForm): void {
     const user = userForm.value;
     this.formSubmitEvent.emit(user);
