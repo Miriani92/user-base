@@ -19,7 +19,7 @@ const {
   filterCategories,
 } = require("../controllers/userBase");
 
-router.route("/").get(getUsersList).post(addUser);
+router.route("/").get(getUsersList).post(addUser).patch(editUser);
 router
   .route("/category")
   .get(getCategoryList)
@@ -32,6 +32,6 @@ router.route("/category/categoryList").post(filterCategories);
 
 router.route("/category/:id").delete(deleteCategory);
 router.route("/status/:id").delete(deleteStatus);
-router.route("/:id").get(getUser).patch(editUser).delete(deleteUser);
+router.route("/:id").get(getUser).delete(deleteUser);
 
 module.exports = router;

@@ -9,9 +9,26 @@ import { NgForm } from '@angular/forms';
 export class DetailsFormComponent {
   @Output() formSubmitEvent = new EventEmitter();
   @Input() public user: any;
+
   onSubmit(userForm: NgForm): void {
-    const user = userForm.value;
-    this.formSubmitEvent.emit(user);
+    let formValue;
+    if (this.user) {
+      formValue = {
+        value: {
+          ...this.user,
+          ...userForm.value,
+        },
+        edit: true,
+      };
+    } else {
+      formValue = {
+        value: {
+          ...userForm.value,
+        },
+        edit: false,
+      };
+    }
+    this.formSubmitEvent.emit(formValue);
     userForm.reset();
   }
 }

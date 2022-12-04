@@ -34,17 +34,18 @@ const getUser = async (req, res) => {
 };
 
 const editUser = async (req, res) => {
-  console.log("here in the editUser", req.body);
   try {
-    const { id: userID } = req.body;
+    const { _id: userID } = req.body;
     const updatedUser = await userModel.findOneAndUpdate(
       { _id: userID },
       req.body
     );
-    if (!user) {
+
+    if (!updatedUser) {
       return res.status(404).json({ msg: "no user with this id" });
     }
-    res.status(200).json({ updatedUser });
+
+    res.status(200).json({ name: "edited" });
   } catch (error) {
     res.status(500).json({ msg: error });
   }

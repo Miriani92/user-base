@@ -22,12 +22,15 @@ export class DetailsComponent implements OnInit {
     this.userService.getUser(this.userID).subscribe({
       next: (res) => {
         const { user }: any = res;
-        console.log(user);
         this.currentUser = user;
       },
     });
   }
-  onAddUser(user: UserData): void {
-    this.userService.addUser(user);
+  onAddUser(user: any): void {
+    if (user.edit) {
+      this.userService.editUser(user).subscribe();
+    } else {
+      this.userService.addUser(user.value);
+    }
   }
 }

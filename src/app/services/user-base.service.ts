@@ -68,4 +68,7 @@ export class UserBaseService {
   getUser(id: any) {
     return this.http.get(URL.base + `/${id}`);
   }
+  editUser(editedUser: any) {
+    return this.http.patch(URL.base, editedUser.value);
+  }
 }
