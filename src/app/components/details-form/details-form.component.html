@@ -75,12 +75,18 @@
     </div>
     <div>
       <select name="category">
-        <option value="category" selected>Category</option>
+        <option selected disabled hidden>Category</option>
+        <option *ngFor="let category of allCategories">
+          {{ category.name }}
+        </option>
       </select>
     </div>
     <div>
-      <select>
-        <option value="status" selected>Status</option>
+      <select name="status">
+        <option selected disabled hidden>Status</option>
+        <option *ngFor="let status of allStatuses">
+          {{ status.name }}
+        </option>
       </select>
     </div>
     <button

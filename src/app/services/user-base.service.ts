@@ -8,7 +8,7 @@ import { URL } from '../constants/constants';
   providedIn: 'root',
 })
 export class UserBaseService {
-  public userList = {};
+  public userList: any = {};
 
   constructor(private http: HttpClient) {}
 
@@ -62,7 +62,6 @@ export class UserBaseService {
     return this.http.post(URL.statusList, filterBy);
   }
   fitlerCategories(filterBy: any) {
-    console.log('in services', filterBy);
     return this.http.post(URL.categoryLsit, filterBy);
   }
   getUser(id: any) {

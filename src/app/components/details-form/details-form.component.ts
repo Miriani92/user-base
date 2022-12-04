@@ -9,6 +9,8 @@ import { NgForm } from '@angular/forms';
 export class DetailsFormComponent {
   @Output() formSubmitEvent = new EventEmitter();
   @Input() public user: any;
+  @Input() public allCategories: any;
+  @Input() public allStatuses: any;
 
   onSubmit(userForm: NgForm): void {
     let formValue;
