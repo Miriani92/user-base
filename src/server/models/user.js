@@ -12,8 +12,8 @@ const UserSchema = new mongoose.Schema({
   email: String,
   privateNumber: Number,
   birthDate: Number,
-  category: UserCategorySchema,
-  status: UserStatusSchema,
+  category: String,
+  status: String,
 });
 
 const Models = {

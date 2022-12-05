@@ -12,6 +12,8 @@ export class DetailsFormComponent {
   @Input() public allCategories: any;
   @Input() public allStatuses: any;
 
+  constructor() {}
+
   onSubmit(userForm: NgForm): void {
     let formValue;
     if (this.user) {

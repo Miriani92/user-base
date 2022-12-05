@@ -74,16 +74,16 @@
       >
     </div>
     <div>
-      <select name="category">
-        <option selected disabled hidden>Category</option>
+      <div>Category</div>
+      <select #category="ngModel" name="category" [ngModel]="user?.category">
         <option *ngFor="let category of allCategories">
           {{ category.name }}
         </option>
       </select>
     </div>
     <div>
-      <select name="status">
-        <option selected disabled hidden>Status</option>
+      <div>Status</div>
+      <select #status="ngModel" name="status" [ngModel]="user?.status">
         <option *ngFor="let status of allStatuses">
           {{ status.name }}
         </option>
