@@ -19,15 +19,6 @@ export class DetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userID = this.activeRoute.snapshot.paramMap.get('id');
-    if (this.userID) {
-      this.userService.getUser(this.userID).subscribe({
-        next: (res) => {
-          const { user }: any = res;
-          this.currentUser = user;
-        },
-      });
-    }
     this.userService.getCategories().subscribe({
       next: (res: any) => {
         const { categoryList }: any = res;
@@ -40,6 +31,15 @@ export class DetailsComponent implements OnInit {
         this.allStatuses = statusList;
       },
     });
+    this.userID = this.activeRoute.snapshot.paramMap.get('id');
+    if (this.userID) {
+      this.userService.getUser(this.userID).subscribe({
+        next: (res) => {
+          const { user }: any = res;
+          this.currentUser = user;
+        },
+      });
+    }
   }
   onAddUser(user: any): void {
     if (user.edit) {

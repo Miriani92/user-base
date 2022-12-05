@@ -13,8 +13,8 @@ const queryUserList = ({
     email: { $regex: email },
     privateNumber: { $eq: privateNumber },
     birthDate: { $eq: birthDate },
-    category: { $regex: category },
-    status: { $regex: status },
+    category: { $eq: category },
+    status: { $eq: status },
   };
   const queryData = {};
   for (let key in query) {

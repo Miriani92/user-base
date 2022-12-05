@@ -64,7 +64,6 @@ const deleteUser = async (req, res) => {
   }
 };
 const addUser = async (req, res) => {
-  console.log("htis is the data", req.body);
   try {
     const user = await userModel.create(req.body);
     res.status(201).json({ user });
