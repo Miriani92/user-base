@@ -1,10 +1,20 @@
-const queryUserList = ({ name, lastName, email, privateNumber, birthDate }) => {
+const queryUserList = ({
+  name,
+  lastName,
+  email,
+  privateNumber,
+  birthDate,
+  category,
+  status,
+}) => {
   const query = {
     name: { $regex: name },
     lastName: { $regex: lastName },
     email: { $regex: email },
     privateNumber: { $eq: privateNumber },
     birthDate: { $eq: birthDate },
+    category: { $regex: category },
+    status: { $regex: status },
   };
   const queryData = {};
   for (let key in query) {

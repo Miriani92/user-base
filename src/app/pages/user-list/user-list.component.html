@@ -80,14 +80,26 @@
         >
       </div>
       <div>
-        <select name="category">
-          <option value="category" selected>Category</option>
-        </select>
+        <label for="category">Category</label><br />
+        <input
+          #category="ngModel"
+          required
+          minlength="1"
+          type="string"
+          name="category"
+          ngModel
+        />
       </div>
       <div>
-        <select>
-          <option value="status" selected>Status</option>
-        </select>
+        <label for="status">Status</label><br />
+        <input
+          #status="ngModel"
+          required
+          minlength="1"
+          type="string"
+          name="status"
+          ngModel
+        />
       </div>
       <button type="submit">Submit</button>
     </form>

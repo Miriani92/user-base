@@ -13,7 +13,6 @@ const filterUsers = async (req, res) => {
   const query = queryUserList(req.body);
   try {
     const filterdUsersList = await userModel.find(query);
-
     res.status(200).json({ filterdUsersList });
   } catch (error) {
     res.status(500).json({ msg: error });
