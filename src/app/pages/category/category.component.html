@@ -1,20 +1,28 @@
-<div>
-  <div class="filterWrapper">
-    <form
-      #categoryFrom="ngForm"
-      class="filter"
-      (submit)="filterCategories(categoryFrom)"
-    >
-      <label for="category">Statuses</label><br />
-      <input type="text" name="name" ngModel />
-      <button type="submit">Filter Categories</button>
-    </form>
+<div class="filterWrapper">
+  <form
+    #categoryFrom="ngForm"
+    class="filter"
+    (submit)="filterCategories(categoryFrom)"
+  >
+    <label for="category" class="categoryLabel">Category</label><br />
+    <input class="categoryInput" type="text" name="name" ngModel />
+    <button class="searchButton" type="submit">Search</button>
+  </form>
+</div>
+<br />
+<div class="resultSection">
+  <div>
+    <button class="addButton" (click)="openDialog()">+</button>
   </div>
-  <br />
-  <button (click)="openDialog()">Add Category</button>
   <div class="categoryList" *ngFor="let category of categories">
-    <p>{{ category.name }}</p>
-    <button (click)="openDialog(category)">Edit</button>
-    <button (click)="onDeleteCategory(category._id)">Delete</button>
+    <span>{{ category.name }}</span>
+    <div class="buttonsWrapper">
+      <mat-icon class="editButton" (click)="openDialog(category)"
+        >edit</mat-icon
+      >
+      <mat-icon class="deleteButton" (click)="onDeleteCategory(category._id)"
+        >delete</mat-icon
+      >
+    </div>
   </div>
 </div>

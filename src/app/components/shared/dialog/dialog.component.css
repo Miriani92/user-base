@@ -1,3 +1,41 @@
+.formWrapper {
+  margin-bottom: 12px;
+  display: flex;
+}
+form > input {
+  margin: 4px 0 10px 0;
+  border: none;
+  background: #f2f2f2;
+  padding: 12px;
+  border-radius: 3px;
+  width: 250px;
+  outline: none;
+  border-radius: 5px;
+}
+
+form > input:focus {
+  border-bottom: 2px solid rgb(23, 151, 156);
+  margin-bottom: 8px;
+}
 .dialogWrapper {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 500px;
+  height: 200px;
+}
+
+.dialogButton {
+  background-color: rgb(23, 151, 156);
+  cursor: pointer;
+  width: 150px;
+  letter-spacing: 2px;
+  font-size: large;
+  height: 40px;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 20px;
+  cursor: pointer;
 }

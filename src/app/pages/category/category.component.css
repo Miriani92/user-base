@@ -1,11 +1,88 @@
 .categoryList {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  margin-top: 30px;
+  width: 425px;
+  height: 45px;
+  border-radius: 5px;
+  background: #f2f2f2;
+  padding: 0 4px 0 8px;
 }
 .filterWrapper {
   margin-top: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.categoryInput {
+  margin: 4px 0 10px 0;
+  border: none;
+  background: #f2f2f2;
+  padding: 12px;
+  border-radius: 3px;
+  width: 250px;
+  outline: none;
+  border-radius: 5px;
+}
+.categoryInput:focus {
+  border-bottom: 2px solid rgb(57, 181, 57);
+  margin-bottom: 8px;
+}
+.categoryLabel {
+  position: relative;
+  font-size: 15px;
+  padding-top: 18px;
+  margin-bottom: 5px;
+  color: rgba(0, 0, 0, 0.89);
+}
+
+.searchButton {
+  background-color: rgb(57, 181, 57);
+  width: 150px;
+  letter-spacing: 2px;
+  font-size: large;
+  height: 38px;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 20px;
+  cursor: pointer;
+  margin-left: 8px;
+}
+.addButton {
+  background-color: rgb(57, 181, 57);
+  width: 45px;
+  height: 45px;
+  font-size: 35px;
+  text-align: center;
+  color: white;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+.resultSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.deleteButton {
+  color: red;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.editButton {
+  color: rgb(23, 151, 156);
+  cursor: pointer;
+}
+.buttonsWrapper {
+  text-align: center;
+}
+.categoryList > span {
+  height: 45px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 45px;
 }

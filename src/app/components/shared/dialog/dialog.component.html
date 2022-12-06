@@ -1,5 +1,13 @@
-<form #dialogForm="ngForm" class="dialogWrapper">
-  <h1>Hello</h1>
-  <input *ngIf="input" #dialogInput="ngModel" name="name" [(ngModel)]="title" />
-  <button (click)="onEdit(dialogForm)">{{ buttonTitle }}</button>
-</form>
+<div class="dialogWrapper">
+  <form #dialogForm="ngForm" class="formWrapper">
+    <input
+      *ngIf="input"
+      #dialogInput="ngModel"
+      name="name"
+      [(ngModel)]="title"
+    />
+  </form>
+  <button class="dialogButton" (click)="onEdit(dialogForm)">
+    {{ buttonTitle }}
+  </button>
+</div>

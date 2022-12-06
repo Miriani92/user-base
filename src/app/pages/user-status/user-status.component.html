@@ -1,20 +1,26 @@
-<div>
-  <div class="filterWrapper">
-    <form
-      #statusForm="ngForm"
-      class="filter"
-      (submit)="filterStatuses(statusForm)"
-    >
-      <label for="status">Statuses</label><br />
-      <input type="text" name="name" ngModel />
-      <button type="submit">Filter Statuses</button>
-    </form>
+<div class="filterWrapper">
+  <form
+    #statusForm="ngForm"
+    class="filter"
+    (submit)="filterStatuses(statusForm)"
+  >
+    <label for="status" class="statusLabel">Status</label><br />
+    <input class="statusInput" type="text" name="name" ngModel />
+    <button class="searchButton" type="submit">Search</button>
+  </form>
+</div>
+<br />
+<div class="resultSection">
+  <div>
+    <button class="addButton" (click)="openDialog()">+</button>
   </div>
-  <br />
-  <button (click)="openDialog()">Add Status</button>
   <div class="statusList" *ngFor="let status of statuses">
-    <p>{{ status.name }}</p>
-    <button (click)="openDialog(status)">Edit</button>
-    <button (click)="onDeleteStatus(status._id)">Delete</button>
+    <span>{{ status.name }}</span>
+    <div class="buttonsWrapper">
+      <mat-icon class="editButton" (click)="openDialog(status)">edit</mat-icon>
+      <mat-icon class="deleteButton" (click)="onDeleteStatus(status._id)"
+        >delete</mat-icon
+      >
+    </div>
   </div>
 </div>

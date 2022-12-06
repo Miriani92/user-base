@@ -1,12 +1,12 @@
 .navBarWrapper {
   width: 100%;
-  background-color: rgb(182, 179, 197);
+  background-color: rgba(64, 191, 64, 0.906);
 }
 
 .navBarWrapper > ul > li > a {
-  color: rgb(43, 42, 42);
+  color: rgba(0, 0, 0, 0.89);
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
   font-size: large;
 }
 
@@ -26,6 +26,5 @@
 }
 
 .navBarWrapper > ul > li.active {
-  color: red;
-  border-bottom: 2px solid red;
+  border-bottom: 2px solid rgb(43, 42, 42);
 }

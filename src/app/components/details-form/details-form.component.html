@@ -1,7 +1,7 @@
 <div class="formWrapper">
   <form #addUser="ngForm" (ngSubmit)="onSubmit(addUser)">
     <h1>User Registration</h1>
-    <div>
+    <div class="field">
       <label for="name">Name</label><br />
       <input
         #name="ngModel"
@@ -75,8 +75,9 @@
     </div>
     <div>
       <div>Category</div>
+      <br />
       <select #category="ngModel" name="category" [ngModel]="user?.category">
-        <option selected>---Choose---</option>
+        <option selected>Options</option>
         <option *ngFor="let category of allCategories">
           {{ category.name }}
         </option>
@@ -84,23 +85,15 @@
     </div>
     <div>
       <div>Status</div>
+      <br />
       <select #status="ngModel" name="status" [ngModel]="user?.status">
-        <option selected>---Choose---</option>
+        <option selected>Options</option>
         <option *ngFor="let status of allStatuses">
           {{ status.name }}
         </option>
       </select>
     </div>
-    <button
-      [disabled]="
-        name.invalid ||
-        email.invalid ||
-        birthDate.invalid ||
-        privateNumber.invalid
-      "
-      type="submit"
-    >
-      Submit
-    </button>
+    <br />
+    <button class="submitButton" type="submit">Submit</button>
   </form>
 </div>

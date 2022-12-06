@@ -1,21 +1,75 @@
 .formWrapper {
-  padding-top: 48px;
   display: flex;
+  align-items: center;
   justify-content: center;
+  padding-top: 48px;
+  margin: 0 auto;
+}
+.field {
+  width: fit-content;
 }
 form > h1 {
   margin-bottom: 24px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.89);
+  font-weight: 400;
 }
+span {
+  position: absolute;
+  padding-left: 10px;
+}
+
 div > form > div > input {
   margin: 4px 0 10px 0;
+  border: none;
+  background: #f2f2f2;
+  padding: 12px;
+  border-radius: 3px;
+  width: 250px;
+  outline: none;
+  border-radius: 5px;
 }
+div > form > div > label {
+  position: relative;
+  font-size: 15px;
+  padding-top: 18px;
+  margin-bottom: 5px;
+  color: rgba(0, 0, 0, 0.89);
+}
+div > form > div > input:focus {
+  border-bottom: 2px solid rgb(57, 181, 57);
+  margin-bottom: 8px;
+}
+
 div > form > div > select {
+  all: unset;
   margin-bottom: 10px;
+  text-align: center;
+  font-size: 15px;
   width: 150px;
+  height: 30px;
+  background: #f2f2f2;
+  line-height: 30px;
 }
 div > form > div > select > option {
   width: 100%;
 }
 .invalid {
   color: red;
+}
+.submitButton {
+  background-color: rgb(57, 181, 57);
+  width: 150px;
+  letter-spacing: 2px;
+  font-size: large;
+  height: 40px;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+div > form > div {
+  color: rgba(0, 0, 0, 0.89);
+  font-size: 15px;
 }
