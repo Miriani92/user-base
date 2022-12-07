@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { CategoryComponent } from './pages/category/category.component';
 import { UserStatusComponent } from './pages/user-status/user-status.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
@@ -37,6 +38,7 @@ import { FormsModule } from '@angular/forms';
     MaterialModule,
     HttpClientModule,
     FormsModule,
+    NgxPaginationModule,
   ],
   providers: [UserBaseService],
   bootstrap: [AppComponent],

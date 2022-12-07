@@ -1,4 +1,4 @@
-<div>
+<div class="wrapper">
   <h1 class="header">Filter Users</h1>
   <div class="formWrapper">
     <form
@@ -98,7 +98,15 @@
     <span>Status</span>
     <span>Action</span>
   </div>
-  <div *ngFor="let user of users" class="userWrapper">
+  <div
+    *ngFor="
+      let user of users
+        | paginate
+          : { itemsPerPage: tableSize, currentPage: page, totalItems: count };
+      let i = index
+    "
+    class="userWrapper"
+  >
     <div class="user">
       <div>{{ user.name }}</div>
       <div>{{ user.lastName }}</div>
@@ -118,5 +126,13 @@
         >
       </div>
     </div>
+  </div>
+  <div class="paginate">
+    <pagination-controls
+      previousLabel="Prev"
+      nextLabel="Next"
+      (pageChange)="onTableDataChange($event)"
+    >
+    </pagination-controls>
   </div>
 </div>

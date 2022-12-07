@@ -2,8 +2,12 @@ const { userModel, statusModel, categorytModel } = require("../models/user");
 const { queryUserList, queryList } = require("../utils/queryList");
 
 const getUsersList = async (req, res) => {
+  const { page = 1, limit = 100 } = req.query;
   try {
-    const usersList = await userModel.find({});
+    const usersList = await userModel
+      .find()
+      .limit(limit * 1)
+      .skip((page - 1) * limit);
     res.status(200).json({ usersList });
   } catch (error) {
     res.status(500).json({ msg: error });

@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 30px;
+  margin-top: 8px;
   width: 425px;
   height: 45px;
   border-radius: 5px;
@@ -60,6 +60,7 @@
   border-radius: 50%;
   border: none;
   cursor: pointer;
+  margin-bottom: 26px;
 }
 .resultSection {
   display: flex;
