@@ -14,13 +14,9 @@ form {
   align-items: center;
   justify-content: center;
 }
-.user {
-  display: flex;
-}
 .userWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 0 auto;
+  width: 1150px;
 }
 input {
   margin: 4px 0 10px 0;
@@ -57,14 +53,62 @@ input:focus {
   margin-left: 8px;
 }
 .listBar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: 50px;
   color: white;
   font-size: 14px;
   margin: 0 auto;
-  height: 50px;
   width: 1130px;
   background-color: rgb(23, 151, 156);
   padding: 0 8px 0 8px;
+  margin-bottom: 36px;
+}
+.email {
+  width: 250px;
+}
+.listBar > span {
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+}
+.name {
+  width: 200px;
+  background-color: red;
+}
+.user {
+  margin-bottom: 8px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: 36px;
+  font-size: 14px;
+  background-color: #f2f2f2;
+}
+.user > div {
+  text-align: center;
+  height: 36px;
+  line-height: 36px;
+}
+
+.deleteButton {
+  color: red;
+  cursor: pointer;
+  margin-left: 8px;
+  padding-top: 8px;
+}
+
+.editButton {
+  color: rgb(23, 151, 156);
+  cursor: pointer;
+  margin-left: 8px;
+}
+.status {
+  display: flex;
+  text-align: center;
+  height: 36px;
+  line-height: 36px;
+  cursor: pointer;
+}
+.buttonWrapper {
+  width: 100px;
 }

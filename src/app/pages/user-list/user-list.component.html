@@ -92,17 +92,31 @@
     <span>Name</span>
     <span>Lastname</span>
     <span>Privatenumber</span>
-    <span>Emali</span>
+    <span class="email">Email</span>
     <span>Birth Date</span>
     <span>Category</span>
     <span>Status</span>
+    <span>Action</span>
   </div>
   <div *ngFor="let user of users" class="userWrapper">
     <div class="user">
-      <p>{{ user.name }}</p>
-      <p>{{ user.email }}</p>
+      <div>{{ user.name }}</div>
+      <div>{{ user.lastName }}</div>
+      <div>{{ user.privateNumber }}</div>
+      <div class="email">{{ user.email }}</div>
+      <div>{{ user.birthDate }}</div>
+      <div>{{ user.category }}</div>
+      <div>
+        {{ user.status }}
+      </div>
+      <div class="buttonsWrapper">
+        <mat-icon class="editButton" routerLink="/details/{{ user._id }}"
+          >edit</mat-icon
+        >
+        <mat-icon class="deleteButton" (click)="onDeleteUser(user._id)"
+          >delete</mat-icon
+        >
+      </div>
     </div>
-    <button (click)="onDeleteUser(user._id)">Delete</button>
-    <button routerLink="/details/{{ user._id }}">Edit</button>
   </div>
 </div>

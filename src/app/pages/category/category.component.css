@@ -86,3 +86,14 @@
   font-size: 16px;
   line-height: 45px;
 }
+
+.deleteButton {
+  color: red;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.editButton {
+  color: rgb(23, 151, 156);
+  cursor: pointer;
+}
