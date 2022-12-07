@@ -77,7 +77,7 @@
       <div>Category</div>
       <br />
       <select #category="ngModel" name="category" [ngModel]="user?.category">
-        <option selected>Options</option>
+        <option selected value="null" disabled>Options</option>
         <option *ngFor="let category of allCategories">
           {{ category.name }}
         </option>
@@ -87,7 +87,7 @@
       <div>Status</div>
       <br />
       <select #status="ngModel" name="status" [ngModel]="user?.status">
-        <option selected>Options</option>
+        <option selected value="null" disabled>Options</option>
         <option *ngFor="let status of allStatuses">
           {{ status.name }}
         </option>

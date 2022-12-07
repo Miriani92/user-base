@@ -13,7 +13,6 @@ export class DetailsFormComponent {
   @Input() public allStatuses: any;
 
   constructor() {}
-
   onSubmit(userForm: NgForm): void {
     let formValue;
     if (this.user) {
