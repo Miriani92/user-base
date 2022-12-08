@@ -68,13 +68,30 @@ const deleteUser = async (req, res) => {
   }
 };
 const addUser = async (req, res) => {
+  const { category, status } = req.body;
+  let user = req.body;
+  if (!category) {
+    user = {
+      ...user,
+      category: "No Category",
+    };
+  }
+
+  if (!status) {
+    user = {
+      ...user,
+      status: "No Status",
+    };
+  }
+
   try {
-    const user = await userModel.create(req.body);
-    res.status(201).json({ user });
+    const addedUser = await userModel.create(user);
+    res.status(201).json({ addedUser });
   } catch (error) {
     res.status(500).json({ msg: error });
   }
 };
+
 const getStatusList = async (req, res) => {
   try {
     const statusList = await statusModel.find();

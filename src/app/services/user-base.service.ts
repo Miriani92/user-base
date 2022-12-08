@@ -13,9 +13,7 @@ export class UserBaseService {
   constructor(private http: HttpClient) {}
 
   addUser(user: UserData) {
-    return this.http
-      .post<UserData>(URL.base, user)
-      .subscribe((res) => console.log('usersAdded'));
+    return this.http.post<UserData>(URL.base, user).subscribe();
   }
 
   getUserList(): Observable<UserData> {
