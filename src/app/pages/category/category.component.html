@@ -1,28 +1,53 @@
-<div class="filterWrapper">
-  <form
-    #categoryFrom="ngForm"
-    class="filter"
-    (submit)="filterCategories(categoryFrom)"
-  >
-    <label for="category" class="categoryLabel">Category</label><br />
-    <input class="categoryInput" type="text" name="name" ngModel />
-    <button class="searchButton" type="submit">Search</button>
-  </form>
-</div>
-<br />
-<div class="resultSection">
-  <div>
-    <button class="addButton" (click)="openDialog()">+</button>
-  </div>
-  <div class="categoryList" *ngFor="let category of categories">
-    <span>{{ category.name }}</span>
-    <div class="buttonsWrapper">
-      <mat-icon class="editButton" (click)="openDialog(category)"
-        >edit</mat-icon
+<div class="container">
+  <div class="wrapper">
+    <div class="filterWrapper">
+      <form
+        #categoryFrom="ngForm"
+        class="filter"
+        (submit)="filterCategories(categoryFrom)"
       >
-      <mat-icon class="deleteButton" (click)="onDeleteCategory(category._id)"
-        >delete</mat-icon
+        <label for="category" class="categoryLabel">Category</label><br />
+        <input class="categoryInput" type="text" name="name" ngModel />
+        <button class="searchButton" type="submit">Search</button>
+      </form>
+    </div>
+    <br />
+    <div class="resultSection">
+      <div>
+        <button class="addButton" (click)="openDialog()">+</button>
+      </div>
+      <div
+        class="categoryList"
+        *ngFor="
+          let category of categories
+            | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+          let i = index
+        "
       >
+        <span>{{ category.name }}</span>
+        <div class="buttonsWrapper">
+          <mat-icon class="editButton" (click)="openDialog(category)"
+            >edit</mat-icon
+          >
+          <mat-icon
+            class="deleteButton"
+            (click)="onDeleteCategory(category._id)"
+            >delete</mat-icon
+          >
+        </div>
+      </div>
     </div>
   </div>
+  <pagination-controls
+    previousLabel="Prev"
+    nextLabel="Next"
+    (pageChange)="onTableDataChange($event)"
+    class="paginate"
+  >
+  </pagination-controls>
 </div>

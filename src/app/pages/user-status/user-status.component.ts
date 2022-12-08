@@ -13,9 +13,17 @@ import { NgForm } from '@angular/forms';
 export class UserStatusComponent implements OnInit {
   constructor(private userService: UserBaseService, public dialog: MatDialog) {}
 
-  public statuses: any = [];
+  statuses: any = [];
+  title = 'pagination';
+  page: any = 1;
+  count: any = 0;
+  tableSize: any = 10;
+  tableSizes: any = [5, 10, 15, 20];
 
   ngOnInit(): void {
+    this.getStatuses();
+  }
+  getStatuses() {
     this.userService.getStatuses().subscribe({
       next: (res: any) => {
         const { statusList }: any = res;
@@ -78,5 +86,14 @@ export class UserStatusComponent implements OnInit {
         statusForm.reset();
       },
     });
+  }
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.getStatuses();
+  }
+  onTablesSizeChange(event: any) {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.getStatuses();
   }
 }

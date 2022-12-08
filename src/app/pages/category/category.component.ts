@@ -13,9 +13,17 @@ import { NgForm } from '@angular/forms';
 export class CategoryComponent implements OnInit {
   constructor(private userService: UserBaseService, public dialog: MatDialog) {}
 
-  public categories: any = [];
-
+  categories: any = [];
+  title = 'pagination';
+  page: any = 1;
+  count: any = 0;
+  tableSize: any = 10;
+  tableSizes: any = [5, 10, 15, 20];
   ngOnInit(): void {
+    this.getCategories();
+  }
+
+  getCategories() {
     this.userService.getCategories().subscribe({
       next: (res: any) => {
         const { categoryList }: any = res;
@@ -80,5 +88,15 @@ export class CategoryComponent implements OnInit {
         categoryForm.reset();
       },
     });
+  }
+
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.getCategories();
+  }
+  onTablesSizeChange(event: any) {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.getCategories();
   }
 }

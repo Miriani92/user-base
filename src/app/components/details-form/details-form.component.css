@@ -28,6 +28,7 @@ div > form > div > input {
   width: 250px;
   outline: none;
   border-radius: 5px;
+  font-size: 14px;
 }
 div > form > div > label {
   position: relative;

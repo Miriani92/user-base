@@ -1,26 +1,51 @@
-<div class="filterWrapper">
-  <form
-    #statusForm="ngForm"
-    class="filter"
-    (submit)="filterStatuses(statusForm)"
-  >
-    <label for="status" class="statusLabel">Status</label><br />
-    <input class="statusInput" type="text" name="name" ngModel />
-    <button class="searchButton" type="submit">Search</button>
-  </form>
-</div>
-<br />
-<div class="resultSection">
-  <div>
-    <button class="addButton" (click)="openDialog()">+</button>
-  </div>
-  <div class="statusList" *ngFor="let status of statuses">
-    <span>{{ status.name }}</span>
-    <div class="buttonsWrapper">
-      <mat-icon class="editButton" (click)="openDialog(status)">edit</mat-icon>
-      <mat-icon class="deleteButton" (click)="onDeleteStatus(status._id)"
-        >delete</mat-icon
+<div class="container">
+  <div class="wrapper">
+    <div class="filterWrapper">
+      <form
+        #statusForm="ngForm"
+        class="filter"
+        (submit)="filterStatuses(statusForm)"
       >
+        <label for="status" class="statusLabel">Status</label><br />
+        <input class="statusInput" type="text" name="name" ngModel />
+        <button class="searchButton" type="submit">Search</button>
+      </form>
+    </div>
+    <br />
+    <div class="resultSection">
+      <div>
+        <button class="addButton" (click)="openDialog()">+</button>
+      </div>
+      <div
+        class="statusList"
+        *ngFor="
+          let status of statuses
+            | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+          let i = index
+        "
+      >
+        <span>{{ status.name }}</span>
+        <div class="buttonsWrapper">
+          <mat-icon class="editButton" (click)="openDialog(status)"
+            >edit</mat-icon
+          >
+          <mat-icon class="deleteButton" (click)="onDeleteStatus(status._id)"
+            >delete</mat-icon
+          >
+        </div>
+      </div>
     </div>
   </div>
+  <pagination-controls
+    previousLabel="Prev"
+    nextLabel="Next"
+    (pageChange)="onTableDataChange($event)"
+    class="paginate"
+  >
+  </pagination-controls>
 </div>
