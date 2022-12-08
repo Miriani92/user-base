@@ -1,138 +1,139 @@
-<div class="wrapper">
-  <h1 class="header">Filter Users</h1>
-  <div class="formWrapper">
-    <form
-      #filterForm="ngForm"
-      class="filter"
-      (submit)="onFilterUserList(filterForm)"
+<div class="container">
+  <div class="wrapper">
+    <h1 class="header">Filter Users</h1>
+    <div class="formWrapper">
+      <form
+        #filterForm="ngForm"
+        class="filter"
+        (submit)="onFilterUserList(filterForm)"
+      >
+        <div>
+          <label for="name">Name</label><br />
+          <input
+            #name="ngModel"
+            required
+            minlength="1"
+            type="text"
+            name="name"
+            ngModel
+          />
+        </div>
+        <div>
+          <label for="lastname">Lastname</label><br />
+          <input
+            #lastName="ngModel"
+            required
+            minlength="1"
+            type="text"
+            name="lastName"
+            ngModel
+          />
+        </div>
+        <div>
+          <label for="privatenumber">Privatenumber</label><br />
+          <input
+            #privateNumber="ngModel"
+            required
+            minlength="1"
+            type="number"
+            name="privateNumber"
+            ngModel
+          />
+        </div>
+        <div>
+          <label for="email">Email</label><br />
+          <input
+            #email="ngModel"
+            required
+            minlength="1"
+            type="text"
+            name="email"
+            ngModel
+          />
+        </div>
+        <div>
+          <label for="birthDate">Birth Date</label><br />
+          <input
+            #birthDate="ngModel"
+            required
+            minlength="1"
+            type="number"
+            name="birthDate"
+            ngModel
+          />
+        </div>
+        <div>
+          <label for="category">Category</label><br />
+          <input
+            #category="ngModel"
+            required
+            minlength="1"
+            type="string"
+            name="category"
+            ngModel
+          />
+        </div>
+        <div>
+          <label for="status">Status</label><br />
+          <input
+            #status="ngModel"
+            required
+            minlength="1"
+            type="string"
+            name="status"
+            ngModel
+          />
+        </div>
+        <div class="buttonWrapper">
+          <button class="submitButton" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+    <div class="listBar">
+      <span>Name</span>
+      <span>Lastname</span>
+      <span>Privatenumber</span>
+      <span class="email">Email</span>
+      <span>Birth Date</span>
+      <span>Category</span>
+      <span>Status</span>
+      <span>Action</span>
+    </div>
+    <div
+      *ngFor="
+        let user of users
+          | paginate
+            : { itemsPerPage: tableSize, currentPage: page, totalItems: count };
+        let i = index
+      "
+      class="userWrapper"
     >
-      <div>
-        <label for="name">Name</label><br />
-        <input
-          #name="ngModel"
-          required
-          minlength="1"
-          type="text"
-          name="name"
-          ngModel
-        />
-      </div>
-      <div>
-        <label for="lastname">Lastname</label><br />
-        <input
-          #lastName="ngModel"
-          required
-          minlength="1"
-          type="text"
-          name="lastName"
-          ngModel
-        />
-      </div>
-      <div>
-        <label for="privatenumber">Privatenumber</label><br />
-        <input
-          #privateNumber="ngModel"
-          required
-          minlength="1"
-          type="number"
-          name="privateNumber"
-          ngModel
-        />
-      </div>
-      <div>
-        <label for="email">Email</label><br />
-        <input
-          #email="ngModel"
-          required
-          minlength="1"
-          type="text"
-          name="email"
-          ngModel
-        />
-      </div>
-      <div>
-        <label for="birthDate">Birth Date</label><br />
-        <input
-          #birthDate="ngModel"
-          required
-          minlength="1"
-          type="number"
-          name="birthDate"
-          ngModel
-        />
-      </div>
-      <div>
-        <label for="category">Category</label><br />
-        <input
-          #category="ngModel"
-          required
-          minlength="1"
-          type="string"
-          name="category"
-          ngModel
-        />
-      </div>
-      <div>
-        <label for="status">Status</label><br />
-        <input
-          #status="ngModel"
-          required
-          minlength="1"
-          type="string"
-          name="status"
-          ngModel
-        />
-      </div>
-      <div class="buttonWrapper">
-        <button class="submitButton" type="submit">Submit</button>
-      </div>
-    </form>
-  </div>
-  <div class="listBar">
-    <span>Name</span>
-    <span>Lastname</span>
-    <span>Privatenumber</span>
-    <span class="email">Email</span>
-    <span>Birth Date</span>
-    <span>Category</span>
-    <span>Status</span>
-    <span>Action</span>
-  </div>
-  <div
-    *ngFor="
-      let user of users
-        | paginate
-          : { itemsPerPage: tableSize, currentPage: page, totalItems: count };
-      let i = index
-    "
-    class="userWrapper"
-  >
-    <div class="user">
-      <div>{{ user.name }}</div>
-      <div>{{ user.lastName }}</div>
-      <div>{{ user.privateNumber }}</div>
-      <div class="email">{{ user.email }}</div>
-      <div>{{ user.birthDate }}</div>
-      <div>{{ user.category }}</div>
-      <div>
-        {{ user.status }}
-      </div>
-      <div class="buttonsWrapper">
-        <mat-icon class="editButton" routerLink="/details/{{ user._id }}"
-          >edit</mat-icon
-        >
-        <mat-icon class="deleteButton" (click)="onDeleteUser(user._id)"
-          >delete</mat-icon
-        >
+      <div class="user">
+        <div>{{ user.name }}</div>
+        <div>{{ user.lastName }}</div>
+        <div>{{ user.privateNumber }}</div>
+        <div class="email">{{ user.email }}</div>
+        <div>{{ user.birthDate }}</div>
+        <div>{{ user.category }}</div>
+        <div>
+          {{ user.status }}
+        </div>
+        <div class="buttonsWrapper">
+          <mat-icon class="editButton" routerLink="/details/{{ user._id }}"
+            >edit</mat-icon
+          >
+          <mat-icon class="deleteButton" (click)="onDeleteUser(user._id)"
+            >delete</mat-icon
+          >
+        </div>
       </div>
     </div>
   </div>
-  <div class="paginate">
-    <pagination-controls
-      previousLabel="Prev"
-      nextLabel="Next"
-      (pageChange)="onTableDataChange($event)"
-    >
-    </pagination-controls>
-  </div>
+  <pagination-controls
+    previousLabel="Prev"
+    nextLabel="Next"
+    (pageChange)="onTableDataChange($event)"
+    class="paginate"
+  >
+  </pagination-controls>
 </div>

@@ -11,7 +11,6 @@ export class DetailsFormComponent {
   @Input() public user: any;
   @Input() public allCategories: any;
   @Input() public allStatuses: any;
-
   constructor() {}
   onSubmit(userForm: NgForm): void {
     let formValue;
@@ -31,7 +30,7 @@ export class DetailsFormComponent {
         edit: false,
       };
     }
+    userForm.resetForm();
     this.formSubmitEvent.emit(formValue);
-    userForm.reset();
   }
 }

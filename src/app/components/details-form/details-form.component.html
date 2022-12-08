@@ -1,5 +1,8 @@
 <div class="formWrapper">
-  <form #addUser="ngForm" (ngSubmit)="onSubmit(addUser)">
+  <form
+    #addUserForm="ngForm"
+    (ngSubmit)="addUserForm.form.valid && onSubmit(addUserForm)"
+  >
     <h1>User Registration</h1>
     <div class="field">
       <label for="name">Name</label><br />
@@ -11,7 +14,11 @@
         name="name"
         [ngModel]="user?.name"
       />
-      <span *ngIf="name.touched && name.invalid" class="invalid">Invalid</span>
+      <span
+        *ngIf="(name.touched || addUserForm.submitted) && name.errors?.['required']"
+        class="invalid"
+        >Name is required</span
+      >
     </div>
     <div>
       <label for="lastname">Lastname</label><br />
@@ -23,8 +30,10 @@
         name="lastName"
         [ngModel]="user?.lastName"
       />
-      <span *ngIf="lastName.touched && lastName.invalid" class="invalid"
-        >Invalid</span
+      <span
+        *ngIf="(lastName.touched || addUserForm.submitted && lastName.untouched) && name.errors?.['required']"
+        class="invalid"
+        >Lastname is required</span
       >
     </div>
     <div>
@@ -32,16 +41,22 @@
       <input
         #privateNumber="ngModel"
         required
-        minlength="1"
+        minlength="11"
         type="number"
         name="privateNumber"
+        pattern="\d{10}"
         [ngModel]="user?.privateNumber"
       />
 
       <span
-        *ngIf="privateNumber.touched && privateNumber.invalid"
+        *ngIf="(privateNumber.touched || addUserForm.submitted && privateNumber.untouched) && privateNumber.errors?.['required']"
         class="invalid"
-        >Invalid</span
+        >Private number is required</span
+      >
+      <span
+        *ngIf="(privateNumber.touched || addUserForm.submitted && privateNumber.untouched) && privateNumber.errors?.['pattern']"
+        class="invalid"
+        >Privatenumber must be 11 digit</span
       >
     </div>
     <div>
@@ -52,10 +67,22 @@
         minlength="1"
         type="text"
         name="email"
+        pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
         [ngModel]="user?.email"
       />
-      <span *ngIf="email.touched && email.invalid" class="invalid"
-        >Invalid</span
+      <span
+        *ngIf="
+          (email.touched || addUserForm.submitted && email.untouched) && email.errors?.['required']
+        "
+        class="invalid"
+        >Email is required</span
+      >
+      <span
+        *ngIf="
+          (email.touched || addUserForm.submitted) && email.errors?.['pattern']
+        "
+        class="invalid"
+        >Please enter valid email</span
       >
     </div>
     <div>
@@ -69,8 +96,10 @@
         [ngModel]="user?.birthDate"
         ngModel
       />
-      <span *ngIf="birthDate.touched && birthDate.invalid" class="invalid"
-        >Invalid</span
+      <span
+        *ngIf="(birthDate.touched || addUserForm.submitted && birthDate.untouched) && birthDate.errors?.['required']"
+        class="invalid"
+        >Birth date is required</span
       >
     </div>
     <div>
