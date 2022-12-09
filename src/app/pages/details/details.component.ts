@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserBaseService } from 'src/app/services/user-base.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-details',
@@ -15,7 +16,8 @@ export class DetailsComponent implements OnInit {
 
   constructor(
     private userService: UserBaseService,
-    private activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private datePipe: DatePipe
   ) {}
 
   ngOnInit(): void {
@@ -36,7 +38,14 @@ export class DetailsComponent implements OnInit {
       this.userService.getUser(this.userID).subscribe({
         next: (res) => {
           const { user }: any = res;
-          this.currentUser = user;
+          const traformedDate = this.datePipe
+            .transform(user.birthDate, 'yyyy/MM/dd')
+            ?.replace(/[/]/g, '-');
+          const userData = {
+            ...user,
+            birthDate: traformedDate,
+          };
+          this.currentUser = userData;
         },
       });
     }
@@ -45,7 +54,14 @@ export class DetailsComponent implements OnInit {
     if (user.edit) {
       this.userService.editUser(user).subscribe();
     } else {
-      this.userService.addUser(user.value);
+      let { birthDate } = user.value;
+      let userData = {
+        ...user.value,
+        birthDate: this.datePipe.transform(birthDate, 'dd/MM/yyyy'),
+      };
+
+      console.log(userData);
+      this.userService.addUser(userData);
     }
   }
 }

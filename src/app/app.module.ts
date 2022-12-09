@@ -9,6 +9,7 @@ import { UserListComponent } from './pages/user-list/user-list.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { DetailsFormComponent } from './components/details-form/details-form.component';
 import { UserBaseService } from './services/user-base.service';
+import { DatePipe } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { FilterComponent } from './components/shared/filter/filter.component';
@@ -40,7 +41,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     NgxPaginationModule,
   ],
-  providers: [UserBaseService],
+  providers: [UserBaseService, DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

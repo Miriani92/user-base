@@ -70,7 +70,6 @@ export class CategoryComponent implements OnInit {
   }
 
   onAddCategory(category: any) {
-    console.log(category);
     this.userService.addCategory(category).subscribe({
       next: (res) => {
         const { updatedCategories }: any = res;

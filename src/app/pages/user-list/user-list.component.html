@@ -57,7 +57,7 @@
             #birthDate="ngModel"
             required
             minlength="1"
-            type="number"
+            type="date"
             name="birthDate"
             ngModel
           />
@@ -113,7 +113,7 @@
         <div>{{ user.lastName }}</div>
         <div>{{ user.privateNumber }}</div>
         <div class="email">{{ user.email }}</div>
-        <div>{{ user.birthDate }}</div>
+        <div>{{ user.birthDate | date : "dd/MM/yyyy" }}</div>
         <div>{{ user.category }}</div>
         <div>
           {{ user.status }}

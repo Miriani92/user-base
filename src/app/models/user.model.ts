@@ -3,7 +3,7 @@ export interface UserData {
   lastName: String;
   email: String;
   privateNumber: Number;
-  birthDate: Number;
+  birthDate: DataView;
   category?: Category;
   status?: Status;
 }

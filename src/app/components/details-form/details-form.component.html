@@ -56,7 +56,7 @@
       <span
         *ngIf="(privateNumber.touched || addUserForm.submitted && privateNumber.untouched) && privateNumber.errors?.['pattern']"
         class="invalid"
-        >Privatenumber must be 11 digit</span
+        >Privatenumber must be 10 digit</span
       >
     </div>
     <div>
@@ -91,7 +91,7 @@
         #birthDate="ngModel"
         required
         minlength="1"
-        type="number"
+        type="date"
         name="birthDate"
         [ngModel]="user?.birthDate"
         ngModel

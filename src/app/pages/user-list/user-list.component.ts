@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { NgForm } from '@angular/forms';
 import { UserBaseService } from 'src/app/services/user-base.service';
 
@@ -15,7 +16,10 @@ export class UserListComponent implements OnInit {
   tableSize: any = 10;
   tableSizes: any = [5, 10, 15, 20];
 
-  constructor(private userService: UserBaseService) {}
+  constructor(
+    private userService: UserBaseService,
+    private datePipe: DatePipe
+  ) {}
 
   ngOnInit(): void {
     this.getUsers();
@@ -24,13 +28,20 @@ export class UserListComponent implements OnInit {
     this.userService.getUserList().subscribe({
       next: (res) => {
         const { usersList }: any = res;
+        console.log(usersList);
         this.users = usersList;
       },
     });
   }
   onFilterUserList(filterForm: NgForm): any {
-    const filterString = filterForm.value;
-    this.userService.filterUserList(filterString).subscribe({
+    const filterData = {
+      ...filterForm.value,
+      birthDate: this.datePipe.transform(
+        filterForm.value.birthDate,
+        'dd/MM/yyyy'
+      ),
+    };
+    this.userService.filterUserList(filterData).subscribe({
       next: (res) => {
         const { filterdUsersList }: any = res;
         this.users = filterdUsersList;

@@ -33,8 +33,6 @@ export class UserBaseService {
     return this.http.get(URL.category);
   }
 
-  // here we subscribe in the services and making the updated users global
-
   editCategory(edited: any) {
     return this.http.patch(URL.category, edited);
   }
