@@ -38,7 +38,7 @@ export class UserListComponent implements OnInit {
       ...filterForm.value,
       birthDate: this.datePipe.transform(
         filterForm.value.birthDate,
-        'dd/MM/yyyy'
+        'MM/dd/yyyy'
       ),
     };
     this.userService.filterUserList(filterData).subscribe({

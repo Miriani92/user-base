@@ -57,7 +57,7 @@ export class DetailsComponent implements OnInit {
       let { birthDate } = user.value;
       let userData = {
         ...user.value,
-        birthDate: this.datePipe.transform(birthDate, 'dd/MM/yyyy'),
+        birthDate: this.datePipe.transform(birthDate, 'MM/dd/yyyy'),
       };
 
       console.log(userData);
